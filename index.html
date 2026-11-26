@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Ramazon — Web Developer, Video Editor and Graphic Designer.">
+  <title>RAMAZON. | Creative Freelancer</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #090909;
+      --surface: #111111;
+      --surface2: #171717;
+      --white: #f4f4f4;
+      --muted: #858585;
+      --silver: #bcbcbc;
+      --line: #282828;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9,9,9,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font: 700 25px 'Space Grotesk', sans-serif;
+      letter-spacing: -1.5px;
+    }
+
+    .logo span {
+      color: var(--silver);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-contact {
+      border: 1px solid #777;
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-size: 12px;
+      transition: .3s;
+    }
+
+    .nav-contact:hover {
+      background: white;
+      color: black;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -150px;
+      top: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff12, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding: 85px 0;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      padding: 10px 16px;
+      border-radius: 30px;
+      color: #c8c8c8;
+      font-size: 12px;
+      margin-bottom: 35px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #aaa;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #aaa;
+    }
+
+    .hero h1 {
+      font: 700 clamp(48px, 8vw, 88px)/1.05 'Space Grotesk', sans-serif;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #888;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 540px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 25px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      background: #eee;
+      color: #090909;
+    }
+
+    .btn-primary:hover {
+      background: #bbb;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 1px solid #393939;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-bottom {
+      margin-top: 85px;
+      display: flex;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .hero-bottom div {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-bottom strong {
+      display: block;
+      color: white;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 100px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font: 600 clamp(32px, 5vw, 48px)/1.2 'Space Grotesk', sans-serif;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 550px;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: linear-gradient(145deg,#202020,#101010);
+      border: 1px solid #303030;
+      padding: 35px;
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .about-mark {
+      font: 700 65px 'Space Grotesk';
+      color: #d0d0d0;
+      letter-spacing: -6px;
+    }
+
+    .about-card p {
+      color: #999;
+      font-size: 13px;
+    }
+
+    .about-text p {
+      color: #999;
+      line-height: 1.9;
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 45px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 30px;
+      min-height: 245px;
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      border-color: #777;
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 27px;
+      margin-bottom: 35px;
+    }
+
+    .service-card h3 {
+      font: 600 19px 'Space Grotesk';
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .service-number {
+      display: block;
+      color: #777;
+      font-size: 11px;
+      margin-top: 24px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 45px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      border-color: #777;
+      transform: translateY(-4px);
+    }
+
+    .project-preview {
+      height: 225px;
+      background: linear-gradient(135deg,#202020,#101010);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-text {
+      font: 700 39px 'Space Grotesk';
+      letter-spacing: -3px;
+      color: #ddd;
+    }
+
+    .preview-sub {
+      position: absolute;
+      bottom: 22px;
+      color: #777;
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    .project-info {
+      padding: 25px;
+    }
+
+    .project-type {
+      color: #888;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-info h3 {
+      font: 600 21px 'Space Grotesk';
+      margin: 12px 0;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 12px;
+      border-bottom: 1px solid #888;
+      padding-bottom: 5px;
+    }
+
+    /* SKILLS */
+
+    .skills-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .skill {
+      padding: 13px 19px;
+      border: 1px solid #333;
+      color: #bbb;
+      border-radius: 4px;
+      font-size: 12px;
+      transition: .3s;
+    }
+
+    .skill:hover {
+      background: #eee;
+      color: #090909;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      background: linear-gradient(135deg,#1c1c1c,#101010);
+      border: 1px solid #333;
+      padding: 55px;
+      margin-top: 35px;
+    }
+
+    .contact-box h3 {
+      font: 600 clamp(29px, 5vw, 43px) 'Space Grotesk';
+      letter-spacing: -2px;
+      max-width: 550px;
+      margin-bottom: 18px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: #777;
+      font-size: 11px;
+    }
+
+    .footer-logo {
+      font: 700 20px 'Space Grotesk';
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:750px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        padding: 25px 5%;
+        background: #101010;
+        border-bottom: 1px solid #333;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-contact {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero {
+        min-height: 580px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .contact-box {
+        padding: 30px 23px;
+      }
+
+      .hero-bottom {
+        margin-top: 60px;
+        gap: 25px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">RAMAZON<span>.</span></a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#contact" class="nav-contact">Let's talk ↗</a>
+
+        <button class="menu-btn" id="menuBtn"
+          aria-label="Open navigation" aria-expanded="false"
+          aria-controls="navLinks">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="availability">
+            <span class="dot"></span>
+            OPEN TO FREELANCE PROJECTS
+          </div>
+
+          <h1>
+            Creative mind.<br>
+            <span>Digital solutions.</span>
+          </h1>
+
+          <p>
+            Hi, I'm Ramazon. I create modern websites,
+            engaging videos and clean graphic designs.
+            I turn ideas into digital experiences.
+          </p>
+
+          <div class="buttons">
+            <a href="#projects" class="btn btn-primary">
+              Explore my work ↗
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              Contact me
+            </a>
+          </div>
+
+          <div class="hero-bottom">
+            <div>
+              <strong>03</strong>
+              Creative services
+            </div>
+            <div>
+              <strong>Global</strong>
+              Digital mindset
+            </div>
+            <div>
+              <strong>24/7</strong>
+              Online portfolio
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+
+          <div class="about-card">
+            <div class="about-mark">R.</div>
+            <p>CREATIVE FREELANCER / DIGITAL CREATOR</p>
+          </div>
+
+          <div class="about-text">
+            <div class="section-label">01 — ABOUT ME</div>
+            <h2 class="section-title">A little about myself.</h2>
+
+            <p>
+              I'm Ramazon, an aspiring digital freelancer
+              with an interest in web development,
+              video editing and graphic design.
+            </p>
+
+            <p>
+              I enjoy building useful digital projects,
+              exploring creative ideas and learning
+              new technologies.
+            </p>
+
+            <p>
+              My focus is simple: clear communication,
+              thoughtful design and continuous improvement.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-label">02 — WHAT I DO</div>
+        <h2 class="section-title">My services.</h2>
+        <p class="section-desc">
+          Creative and digital services designed
+          to help ideas become reality.
+        </p>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <h3>Web Development</h3>
+            <p>
+              Modern responsive websites, landing pages
+              and personal portfolio websites.
+            </p>
+            <span class="service-number">SERVICE — 01</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▶</div>
+            <h3>Video Editing</h3>
+            <p>
+              Short-form videos, gaming edits,
+              social media content and subtitles.
+            </p>
+            <span class="service-number">SERVICE — 02</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">◈</div>
+            <h3>Graphic Design</h3>
+            <p>
+              Social media graphics, YouTube thumbnails,
+              banners and visual content.
+            </p>
+            <span class="service-number">SERVICE — 03</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+
+        <div class="section-label">03 — SELECTED WORK</div>
+        <h2 class="section-title">Projects & experiments.</h2>
+        <p class="section-desc">
+          A selection of personal projects and
+          creative experiments.
+        </p>
+
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="preview-text">E-GIFT.</div>
+              <div class="preview-sub">DIGITAL EXPERIENCES</div>
+            </div>
+            <div class="project-info">
+              <div class="project-type">WEB DEVELOPMENT</div>
+              <h3>E-Gift</h3>
+              <p>
+                A personal digital gift website project
+                focused on online gifting experiences.
+              </p>
+              <a class="project-link"
+                href="https://ramazonikromov09-beep.github.io/egift/"
+                target="_blank" rel="noopener noreferrer">
+                View project ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="preview-text">VORTEX.</div>
+              <div class="preview-sub">TOP-UP PLATFORM CONCEPT</div>
+            </div>
+            <div class="project-info">
+              <div class="project-type">WEB DEVELOPMENT</div>
+              <h3>VORTEX TOP</h3>
+              <p>
+                A personal gaming top-up platform project
+                with a modern interface and multiple
+                payment integration plans.
+              </p>
+              <span class="project-link">Personal project · In progress</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="preview-text">VISUAL.</div>
+              <div class="preview-sub">GRAPHIC DESIGN</div>
+            </div>
+            <div class="project-info">
+              <div class="project-type">GRAPHIC DESIGN</div>
+              <h3>Visual Concepts</h3>
+              <p>
+                A collection of experimental visual
+                concepts, banners and social media designs.
+              </p>
+              <span class="project-link">Portfolio sample · Coming soon</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="preview-text">MOTION.</div>
+              <div class="preview-sub">VIDEO EDITING</div>
+            </div>
+            <div class="project-info">
+              <div class="project-type">VIDEO EDITING</div>
+              <h3>Motion Experiments</h3>
+              <p>
+                Short video edits, transitions,
+                gaming montages and creative experiments.
+              </p>
+              <span class="project-link">Portfolio sample · Coming soon</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-label">04 — MY TOOLKIT</div>
+        <h2 class="section-title">Tools & technologies.</h2>
+
+        <div class="skills-list">
+          <span class="skill">HTML5</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">CapCut</span>
+          <span class="skill">VN Editor</span>
+          <span class="skill">Canva</span>
+          <span class="skill">Responsive Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-label">05 — GET IN TOUCH</div>
+
+        <div class="contact-box">
+          <h3>Have a project in mind? Let's talk.</h3>
+
+          <p>
+            Have an idea or need a creative digital solution?
+            Feel free to contact me.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary"
+              href="https://t.me/Jorabekovich09"
+              target="_blank" rel="noopener noreferrer">
+              Telegram ↗
+            </a>
+
+            <a class="btn btn-secondary"
+              href="https://github.com/ramazonikromov09-beep"
+              target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">RAMAZON.</div>
+        <p>© <span id="year"></span> RAMAZON. All rights reserved.</p>
+        <p>Designed with purpose.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("active");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
